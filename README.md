@@ -1,7 +1,7 @@
 
 # Angular Web Applicatio for a School registration system
 
-###note : source code available in master branch 
+### note : source code available in master branch 
 
 ### Introduction
 For this project, 
