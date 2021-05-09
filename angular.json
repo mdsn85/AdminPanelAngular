@@ -140,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "admin"
+  "defaultProject": "admin",
+  "cli": {
+    "analytics": "cd16cabb-cfa1-4848-b3da-36aaea3995eb"
+  }
 }

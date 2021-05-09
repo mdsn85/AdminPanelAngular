@@ -12,20 +12,17 @@ export class SecureComponent implements OnInit {
   user: User;
 
   constructor(private authService: AuthService,
-              private router:Router) { }
+    private router: Router) { }
 
   ngOnInit() {
-    this.authService.user().subscribe(
-      (res:any)=>{
-        console.log(res);
-        this.user=res.data;
 
-      },
-      err=>{
-        console.log(err);
-        this.router.navigate(['/login'])
-      }
-    )
+    if (this.authService.isLoggedIn == true) {
+
+    } else {
+
+      this.router.navigate(['/login'])
+    }
+
   }
 
 }

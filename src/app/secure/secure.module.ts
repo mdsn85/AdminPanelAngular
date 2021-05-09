@@ -16,7 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
     MenuComponent,
     DashboardComponent,
     UsersComponent,
-    ProfileComponent
+    ProfileComponent,
+
 ],
   imports: [
     CommonModule,

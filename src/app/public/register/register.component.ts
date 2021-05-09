@@ -5,31 +5,41 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss','./../public.component.scss']
+  styleUrls: ['./register.component.scss', './../public.component.scss']
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-
-  constructor( private FormBuilder: FormBuilder,
+  message: string;
+  constructor(private FormBuilder: FormBuilder,
     private authService: AuthService) { }
 
   ngOnInit() {
     this.form = this.FormBuilder.group({
-      first_name:'',
-      last_name:'',
-      email:'',
-      password:'',
-      password_confirm:''
+      firstName: '',
+      lastName: '',
+      email: '',
+      UserName: '',
+      password: '',
+      password_confirm: ''
     });
+
+
   }
 
-  submit(){
-    const data= this.form.getRawValue();
+  submit() {
+
+    const data = this.form.getRawValue();
+    console.log("data register:" + JSON.stringify(data));
     this.authService.register(data).subscribe(
-      res=>{
+      res => {
+        alert(res['message']);
         console.log(res);
-      }
-    );
+      },
+      (Error) => {
+        console.log('Please check your internet connection.Error:' + JSON.stringify(Error));
+        alert("Error while saveing changes, please try again or contact IT");
+      });
+
   }
 
 }

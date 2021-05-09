@@ -1,3 +1,4 @@
+import { TokenInterceptor } from './interceptors/token.interceptor';
 import { PublicComponent } from './public/public.component';
 import { RegisterComponent } from './public/register/register.component';
 import { LoginComponent } from './public/login/login.component';
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './secure/menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsignerComponent } from './components/newsigner/newsigner.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,14 @@ import { NewsignerComponent } from './components/newsigner/newsigner.component';
   exports:[
     MenuComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
